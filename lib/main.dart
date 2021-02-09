@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
           primarySwatch: Colors.green,
-          visualDensity: VisualDensity.adaptivePlatformDensity,
+          //visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
         home: Scaffold(
             body: WebViewLoad()
@@ -29,11 +29,19 @@ class WebViewLoadUI extends State<WebViewLoad>{
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-            title: Text('r01, L29. webview_flutter')),
+            title: Text('r03, L29. webview_flutter')),
         body: WebView(
-          initialUrl: 'https://google.com',
+          initialUrl: new Uri.dataFromString(html, mimeType: 'text/html').toString(),
           javascriptMode: JavascriptMode.disabled,
         )
     );
   }
 }
+
+const String html = '''
+<html>
+<body>
+  Hi in html.
+</body>
+</html>
+''';
