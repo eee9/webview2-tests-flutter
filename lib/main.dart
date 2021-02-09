@@ -1,37 +1,39 @@
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
-void main() {
-  runApp(MyApp());
-}
+void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Body(),
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          primarySwatch: Colors.green,
+          visualDensity: VisualDensity.adaptivePlatformDensity,
+        ),
+        home: Scaffold(
+            body: WebViewLoad()
+        )
     );
   }
 }
 
-class Body extends StatefulWidget {
-  @override
-  _BodyState createState() => _BodyState();
+class WebViewLoad extends StatefulWidget {
+  WebViewLoadUI createState() => WebViewLoadUI();
 }
 
-class _BodyState extends State<Body> {
+class WebViewLoadUI extends State<WebViewLoad>{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('InAppWebView Example'),
-      ),
-      body: Expanded(
-        child: WebView(
-          initialUrl: 'https://flutter.dev/',
-          javascriptMode: JavascriptMode.unrestricted,
-        ),
-      ),
+        appBar: AppBar(
+            title: Text('r01, L29. webview_flutter')),
+        body: WebView(
+          initialUrl: 'https://google.com',
+          javascriptMode: JavascriptMode.disabled,
+        )
     );
   }
 }
